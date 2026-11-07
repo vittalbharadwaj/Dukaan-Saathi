@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dukaan Saathi – The AI munshi for India’s kirana stores</title>
+<style>
+:root{--bg:#f6efe0;--paper:#fffdf7;--ink:#241c12;--muted:#75695a;--accent:#d9480f;--green:#2b8a57;--gold:#e0a526;--line:#e3d6bd;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17130d;--paper:#221c13;--ink:#f3eadb;--muted:#a89c88;--accent:#ff8a4c;--green:#4cc58a;--gold:#f0bd45;--line:#3a3022;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#17130d;--paper:#221c13;--ink:#f3eadb;--muted:#a89c88;--accent:#ff8a4c;--green:#4cc58a;--gold:#f0bd45;--line:#3a3022;color-scheme:dark}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+background-image:repeating-linear-gradient(transparent 0 31px,var(--line) 31px 32px);background-attachment:local}
+.w{max-width:1040px;margin:0 auto;padding:0 20px}
+.serif{font-family:Georgia,"Iowan Old Style","Times New Roman",serif}
+nav{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
+nav b{font-family:Georgia,serif;font-size:22px}
+nav b i{color:var(--accent);font-style:normal}
+nav a{color:var(--muted);text-decoration:none;margin-left:18px;font-size:14px}
+nav a:hover{color:var(--accent)}
+.hero{display:grid;gap:36px;grid-template-columns:1.1fr .9fr;align-items:center;padding:40px 0 64px}
+@media(max-width:820px){.hero{grid-template-columns:1fr}nav a{display:none}}
+h1{font-family:Georgia,"Iowan Old Style",serif;font-size:clamp(36px,6vw,62px);line-height:1.05;margin:0 0 18px;letter-spacing:-.02em}
+h1 u{text-decoration:none;background:linear-gradient(transparent 62%,color-mix(in srgb,var(--gold) 55%,transparent) 62%)}
+.lead{color:var(--muted);font-size:18px;max-width:520px}
+.btn{display:inline-block;background:var(--accent);color:#fff;border:0;padding:13px 24px;border-radius:10px;font:600 15px inherit;font-family:inherit;cursor:pointer;text-decoration:none;box-shadow:3px 3px 0 var(--ink);transition:transform .12s,box-shadow .12s}
+.btn:hover{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+.btn.alt{background:var(--paper);color:var(--ink);margin-left:8px;border:1.5px solid var(--ink)}
+.phone{background:var(--paper);border:2px solid var(--ink);border-radius:28px;padding:14px;box-shadow:8px 8px 0 var(--ink);max-width:380px;margin:0 auto;width:100%}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.tabs button{border:1.5px solid var(--line);background:transparent;color:var(--ink);padding:5px 11px;border-radius:99px;cursor:pointer;font:13px inherit;font-family:inherit}
+.tabs button.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.chat{min-height:250px;display:flex;flex-direction:column;gap:8px;padding:6px 2px}
+.m{max-width:86%;padding:9px 12px;border-radius:14px;font-size:15px;animation:pop .3s ease}
+.m.u{align-self:flex-end;background:var(--accent);color:#fff;border-bottom-right-radius:4px}
+.m.a{align-self:flex-start;background:var(--bg);border:1px solid var(--line);border-bottom-left-radius:4px}
+@keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.mic{display:flex;align-items:center;gap:10px;margin-top:8px}
+.mic button{width:46px;height:46px;border-radius:50%;border:0;background:var(--green);color:#fff;font-size:20px;cursor:pointer}
+.wave{display:flex;gap:3px;align-items:center;height:24px}
+.wave i{width:3px;height:6px;background:var(--green);border-radius:2px}
+.wave.go i{animation:w .7s ease-in-out infinite}
+.wave.go i:nth-child(2n){animation-delay:.15s}.wave.go i:nth-child(3n){animation-delay:.3s}
+@keyframes w{50%{height:22px}}
+section{padding:52px 0}
+h2{font-family:Georgia,serif;font-size:clamp(28px,4vw,40px);margin:0 0 8px;letter-spacing:-.01em}
+.sub{color:var(--muted);margin:0 0 28px;max-width:600px}
+.cards{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+.card{background:var(--paper);border:1.5px solid var(--ink);border-radius:14px;padding:18px;box-shadow:4px 4px 0 var(--line)}
+.card .n{font-family:Georgia,serif;font-size:40px;color:var(--accent);line-height:1}
+.card p{margin:6px 0 0;color:var(--muted);font-size:14.5px}
+.panel{background:var(--paper);border:1.5px solid var(--ink);border-radius:18px;padding:22px;box-shadow:6px 6px 0 var(--ink)}
+.calc{display:grid;gap:26px;grid-template-columns:1fr 1.3fr}
+@media(max-width:820px){.calc{grid-template-columns:1fr}}
+label{display:flex;justify-content:space-between;font-size:14px;margin:14px 0 4px}
+label b{color:var(--accent)}
+input[type=range]{width:100%;accent-color:var(--accent)}
+.big{font-family:Georgia,serif;font-size:34px;color:var(--green)}
+.key{display:flex;gap:16px;font-size:13px;color:var(--muted);margin-bottom:6px}
+.key s{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;text-decoration:none}
+svg text{fill:var(--muted);font-size:11px;font-family:system-ui,sans-serif}
+.shelf{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:16px 0}
+@media(max-width:560px){.shelf{grid-template-columns:repeat(2,1fr)}}
+.it{border:1.5px solid var(--line);border-radius:10px;padding:10px;background:var(--bg);font-size:13px;position:relative;overflow:hidden}
+.it .bar{height:8px;border-radius:5px;background:var(--line);margin:8px 0 4px;overflow:hidden}
+.it .bar i{display:block;height:100%;width:0;background:var(--green);transition:width 1s ease}
+.it.low .bar i{background:var(--accent)}
+.it .flag{display:none;color:var(--accent);font-weight:600}
+.it.low.done .flag{display:block}
+.scan{position:absolute;left:0;right:0;height:3px;background:var(--green);top:0;opacity:0}
+.scanning .scan{opacity:1;animation:sc 1.2s linear}
+@keyframes sc{to{top:100%}}
+.arch{overflow-x:auto}
+.arch svg{min-width:680px;width:100%;height:auto}
+.node rect{fill:var(--paper);stroke:var(--ink);stroke-width:1.5;transition:fill .2s}
+.node.g rect{stroke:var(--accent);stroke-width:2.5}
+.node:hover rect{fill:var(--bg)}
+.node text{fill:var(--ink);font-size:13px}
+.node .s{fill:var(--muted);font-size:11px}
+.flow{stroke:var(--muted);stroke-width:1.6;fill:none;stroke-dasharray:5 5;animation:dash 1s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-10}}
+#tip{margin-top:10px;font-size:14px;color:var(--muted);min-height:44px}
+.rv{opacity:0;transform:translateY(22px);transition:.7s}
+.rv.in{opacity:1;transform:none}
+footer{padding:40px 0 60px;text-align:center;color:var(--muted);font-size:13px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="w">
+<nav><b>Dukaan <i>Saathi</i></b><div><a href="#demo">Voice</a><a href="#roi">Calculator</a><a href="#scan">Shelf scan</a><a href="#arch">Architecture</a></div></nav>
+
+<div class="hero" id="demo">
+<div>
+<h1>Your shop’s <u>AI munshi</u>. Just talk to it.</h1>
+<p class="lead">Dukaan Saathi runs stock, billing, reorders and festival marketing for kirana owners, in their own language, with no typing. Built on Gemini and Google Cloud.</p>
+<p><a class="btn" href="#roi">Try the calculator</a><a class="btn alt" href="#scan">Scan a shelf</a></p>
+</div>
+<div class="phone">
+<div class="tabs" id="tabs"></div>
+<div class="chat" id="chat" aria-live="polite"></div>
+<div class="mic"><button id="mic" aria-label="Ask Saathi">🎙</button><div class="wave" id="wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span style="font-size:12px;color:var(--muted)">Tap to ask (demo)</span></div>
+</div>
+</div>
+
+<section class="rv">
+<h2>The problem is everywhere</h2>
+<p class="sub">Kirana stores feed India, yet most run on a notebook and memory.</p>
+<div class="cards">
+<div class="card"><div class="n" data-to="13" data-s="M+">0</div><p>kirana stores across India (approximate; cite your own source)</p></div>
+<div class="card"><div class="n" data-to="4" data-s="">0</div><p>languages at launch: Hindi, Kannada, Tamil, Telugu</p></div>
+<div class="card"><div class="n" data-to="0" data-s=" typing">0</div><p>everything works by voice and camera</p></div>
+<div class="card"><div class="n" data-to="5" data-s=" Google AI">0</div><p>models doing real work: Live, Omni, Nano Banana, Lyria, Gemma</p></div>
+</div>
+</section>
+
+<section id="roi" class="rv">
+<h2>What could it earn a shop?</h2>
+<p class="sub">Move the sliders. Illustrative model, not a measured result: assumes Saathi recovers 60% of stock-out losses, ramping up over three months.</p>
+<div class="panel calc">
+<div>
+<label>Daily sales <b id="v1"></b></label><input type="range" id="s1" min="3000" max="40000" step="500" value="12000">
+<label>Sales lost to stock-outs <b id="v2"></b></label><input type="range" id="s2" min="2" max="15" step="1" value="8">
+<label>Recovery by Saathi <b id="v3"></b></label><input type="range" id="s3" min="30" max="90" step="5" value="60">
+<p style="margin:18px 0 0;font-size:14px;color:var(--muted)">Extra revenue per month at full ramp</p>
+<div class="big" id="out">₹0</div>
+<p style="margin:0;font-size:13px;color:var(--muted)">vs. a ₹399/month subscription: <b id="roi2" style="color:var(--ink)"></b></p>
+</div>
+<div>
+<div class="key"><span><s style="background:var(--line)"></s>Without Saathi</span><span><s style="background:var(--green)"></s>With Saathi</span></div>
+<svg id="chart" viewBox="0 0 520 280" width="100%" role="img" aria-label="Monthly revenue with and without Dukaan Saathi"></svg>
+</div>
+</div>
+</section>
+
+<section id="scan" class="rv">
+<h2>Point. Scan. Done.</h2>
+<p class="sub">Press scan to see a simulated shelf scan produce stock counts and reorder alerts. This prototype does not yet process live camera input.</p>
+<div class="panel" id="shelfbox">
+<button class="btn" id="scanbtn">Scan shelf</button>
+<div class="shelf" id="shelf"></div>
+<div id="alert" style="font-size:14px;color:var(--muted)">Ready to scan.</div>
+</div>
+</section>
+
+<section id="arch" class="rv">
+<h2>Under the hood</h2>
+<p class="sub">Hover or tap a block. Orange outlines mark Google AI models.</p>
+<div class="panel arch">
+<svg viewBox="0 0 760 300" id="asvg" role="img" aria-label="System architecture">
+<g class="node" data-t="App: voice, camera and on-device Gemma so billing still works with no network."><rect x="10" y="110" width="130" height="80" rx="10"/><text x="75" y="145" text-anchor="middle">Shopkeeper app</text><text class="s" x="75" y="165" text-anchor="middle">Gemma offline</text></g>
+<g class="node g" data-t="Gemini Live: a real-time voice agent that calls tools like get_stock, record_sale and draft_reorder."><rect x="210" y="10" width="170" height="70" rx="10"/><text x="295" y="42" text-anchor="middle">Gemini Live</text><text class="s" x="295" y="60" text-anchor="middle">voice agent</text></g>
+<g class="node g" data-t="Gemini Omni: reads shelf video and returns structured stock counts and expiry flags."><rect x="210" y="115" width="170" height="70" rx="10"/><text x="295" y="147" text-anchor="middle">Gemini Omni</text><text class="s" x="295" y="165" text-anchor="middle">shelf vision</text></g>
+<g class="node g" data-t="Nano Banana makes festival posters; Lyria makes a short jingle in the local language."><rect x="210" y="220" width="170" height="70" rx="10"/><text x="295" y="252" text-anchor="middle">Nano Banana · Lyria</text><text class="s" x="295" y="270" text-anchor="middle">posters, jingles</text></g>
+<g class="node" data-t="Cloud Run orchestrates agents and tool calls, scaling to zero between requests."><rect x="450" y="40" width="140" height="70" rx="10"/><text x="520" y="72" text-anchor="middle">Cloud Run</text><text class="s" x="520" y="90" text-anchor="middle">orchestration</text></g>
+<g class="node" data-t="Firestore holds live stock and the udhaar ledger; BigQuery powers demand forecasts across stores."><rect x="450" y="180" width="140" height="70" rx="10"/><text x="520" y="212" text-anchor="middle">Firestore · BigQuery</text><text class="s" x="520" y="230" text-anchor="middle">data</text></g>
+<g class="node" data-t="Approved reorders go to distributors on WhatsApp; payments settle via UPI."><rect x="650" y="110" width="100" height="80" rx="10"/><text x="700" y="145" text-anchor="middle">WhatsApp</text><text class="s" x="700" y="165" text-anchor="middle">UPI</text></g>
+<path class="flow" d="M140 135L210 50M140 150L210 150M140 165L210 255M380 45L450 70M380 150L450 100M520 110L520 180M590 85L650 135"/>
+</svg>
+<div id="tip">Hover a block to see what it does.</div>
+</div>
+</section>
+</div>
+<footer>Dukaan Saathi · Startup Buildathon India 2026 concept · Figures are illustrative</footer>
+
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)};
+var L={
+Hindi:["आज का हिसाब बताओ","आज ₹8,420 की बिक्री हुई। आटा और अमूल बटर कम हैं। ऑर्डर कर दूँ?","हाँ, कर दो"],
+Kannada:["ಇವತ್ತಿನ ಲೆಕ್ಕ ಹೇಳು","ಇಂದು ₹8,420 ಮಾರಾಟ. ಅಟ್ಟಾ ಮತ್ತು ಬೆಣ್ಣೆ ಕಡಿಮೆ ಇದೆ. ಆರ್ಡರ್ ಮಾಡಲೇ?","ಹೌದು, ಮಾಡು"],
+Tamil:["இன்றைய கணக்கு சொல்லு","இன்று ₹8,420 விற்பனை. ஆட்டா, வெண்ணெய் குறைவு. ஆர்டர் செய்யவா?","ஆமாம், செய்"],
+English:["Today’s hisaab?","₹8,420 in sales today. Atta and butter are low. Shall I order?","Yes, order"]};
+var done=["Demo complete. A WhatsApp order draft is ready for your approval. (Simulation) ✔","डेमो पूरा हुआ। WhatsApp ऑर्डर ड्राफ्ट तैयार है। (सिमुलेशन) ✔","ಡೆಮೊ ಮುಗಿದಿದೆ. WhatsApp ಆರ್ಡರ್ ಡ್ರಾಫ್ಟ್ ಸಿದ್ಧವಾಗಿದೆ. (ಸಿಮ್ಯುಲೇಶನ್) ✔","டெமோ முடிந்தது. WhatsApp ஆர்டர் வரைவு தயார். (செயல்முறை மாதிரி) ✔"];
+var langs=Object.keys(L),cur="Hindi",busy=false,idx={Hindi:1,Kannada:2,Tamil:3,English:0};
+var tabs=$("tabs"),chat=$("chat"),wave=$("wave");
+langs.forEach(function(k){var b=document.createElement("button");b.textContent=k;b.onclick=function(){cur=k;draw();clearChat()};b.dataset.k=k;tabs.appendChild(b)});
+function draw(){[].forEach.call(tabs.children,function(b){b.className=b.dataset.k===cur?"on":""})}
+function clearChat(){chat.innerHTML="";var m=add("a","Tap the mic and ask in "+cur+".")}
+function add(c,t){var d=document.createElement("div");d.className="m "+c;d.textContent=t;chat.appendChild(d);return d}
+function later(f,ms){return new Promise(function(r){setTimeout(function(){f();r()},ms)})}
+$("mic").onclick=async function(){
+if(busy)return;busy=true;chat.innerHTML="";wave.className="wave go";var s=L[cur];
+await later(function(){add("u",s[0])},500);
+await later(function(){add("a",s[1])},1100);
+await later(function(){add("u",s[2])},1500);
+await later(function(){add("a",done[idx[cur]]);wave.className="wave";busy=false},1100)};
+draw();clearChat();
+
+/* counters + reveal */
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;e.target.classList.add("in");
+[].forEach.call(e.target.querySelectorAll("[data-to]"),function(n){var to=+n.dataset.to,t0=null;
+function st(t){if(!t0)t0=t;var p=Math.min((t-t0)/1200,1);n.textContent=Math.round(to*p)+n.dataset.s;if(p<1)requestAnimationFrame(st)}requestAnimationFrame(st)});io.unobserve(e.target)})},{threshold:.2});
+[].forEach.call(document.querySelectorAll(".rv"),function(e){io.observe(e)});
+
+/* calculator + chart */
+var fmt=function(n){return "₹"+Math.round(n).toLocaleString("en-IN")};
+function calc(){
+var d=+$("s1").value,p=+$("s2").value,r=+$("s3").value;
+$("v1").textContent=fmt(d)+"/day";$("v2").textContent=p+"%";$("v3").textContent=r+"%";
+var base=d*30,gain=base*(p/100)*(r/100),ramp=[.25,.6,1,1,1,1];
+$("out").textContent=fmt(gain);
+var net=gain-399;$("roi2").textContent=(net>0?"+":"")+fmt(net)+" net per month ("+(gain/399).toFixed(1)+"x)";
+var W=520,H=280,pl=48,pb=28,pt=14,max=(base+gain)*1.08,min=base*.85;
+var bw=(W-pl-10)/6,out='';
+for(var g=0;g<=4;g++){var y=pt+(H-pt-pb)*g/4,v=max-(max-min)*g/4;out+='<line x1="'+pl+'" x2="'+W+'" y1="'+y+'" y2="'+y+'" stroke="var(--line)"/><text x="'+(pl-6)+'" y="'+(y+4)+'" text-anchor="end">'+Math.round(v/1000)+'k</text>'}
+for(var m=0;m<6;m++){
+var x=pl+m*bw+bw*.12,w=bw*.34,sc=function(v){return pt+(H-pt-pb)*(max-v)/(max-min)};
+var y1=sc(base),y2=sc(base+gain*ramp[m]);
+out+='<rect x="'+x+'" y="'+y1+'" width="'+w+'" height="'+(H-pb-y1)+'" fill="var(--line)" rx="3"/>';
+out+='<rect x="'+(x+w+3)+'" y="'+y2+'" width="'+w+'" height="'+(H-pb-y2)+'" fill="var(--green)" rx="3"><title>Month '+(m+1)+': '+fmt(base+gain*ramp[m])+'</title></rect>';
+out+='<text x="'+(x+w)+'" y="'+(H-10)+'" text-anchor="middle">M'+(m+1)+'</text>'}
+$("chart").innerHTML=out}
+["s1","s2","s3"].forEach(function(i){$(i).addEventListener("input",calc)});calc();
+
+/* shelf scan */
+var items=[["Atta 5kg",72],["Amul butter",12],["Tata salt",85],["Maggi",40],["Toor dal",8],["Parle-G",90],["Tea 250g",55],["Cooking oil",18]];
+var sh=$("shelf");
+items.forEach(function(it){var d=document.createElement("div");d.className="it"+(it[1]<20?" low":"");
+d.innerHTML='<div class="scan"></div><b>'+it[0]+'</b><div class="bar"><i></i></div><span>'+it[1]+'% left</span><div class="flag">Reorder suggested</div>';sh.appendChild(d)});
+$("scanbtn").onclick=function(){
+var els=sh.children;$("alert").textContent="Scanning…";
+[].forEach.call(els,function(e){e.className=e.className.replace(/ ?(done|scanning)/g,"")});
+[].forEach.call(els,function(e,i){var b=e.querySelector("i");b.style.width="0";
+setTimeout(function(){e.classList.add("scanning");b.style.width=items[i][1]+"%";
+setTimeout(function(){e.classList.remove("scanning");e.classList.add("done")},1200)},i*220)});
+setTimeout(function(){var n=items.filter(function(x){return x[1]<20}).length;
+$("alert").innerHTML="<b style='color:var(--accent)'>"+n+" items running low.</b> Saathi drafted a WhatsApp order for your approval."},items.length*220+1300)};
+
+/* architecture tips */
+[].forEach.call(document.querySelectorAll(".node"),function(n){
+var f=function(){$("tip").textContent=n.dataset.t};n.addEventListener("mouseenter",f);n.addEventListener("click",f)});
+})();
+</script>
+</body>
+</html>
